@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>CALCULATOR</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display" id="display">0</div>
+
+      <div class="buttons">
+        <button class="btn" onclick="input('7')">7</button>
+        <button class="btn" onclick="input('8')">8</button>
+        <button class="btn" onclick="input('9')">9</button>
+        <button class="btn-pink" onclick="clearDisplay()">DEL</button>
+
+        <button class="btn" onclick="input('4')">4</button>
+        <button class="btn" onclick="input('5')">5</button>
+        <button class="btn" onclick="input('6')">6</button>
+        <button class="btn operator" onclick="input('-')">−</button>
+
+        <button class="btn" onclick="input('1')">1</button>
+        <button class="btn" onclick="input('2')">2</button>
+        <button class="btn" onclick="input('3')">3</button>
+        <button class="btn operator" onclick="input('+')">+</button>
+
+        <button class="btn" onclick="input('.')">.</button>
+        <button class="btn" onclick="input('0')">0</button>
+        <button class="btn" onclick="input('/')">/</button>
+        <button class="btn operator" onclick="input('×')">×</button>
+      </div>
+      <div class="last-row">
+        <button class="btn-blue" onclick="reset()">RESET</button>
+        <button class="btn-red" onclick="calculate()">=</button>
+      </div>
+    </div>
+    <script>
+      let expression = "";
+
+      function input(value) {
+        expression += value;
+        document.getElementById("display").innerText = expression;
+      }
+
+      function clearDisplay() {
+        expression = "";
+        document.getElementById("display").innerText = "0";
+      }
+
+      function calculate() {
+        try {
+          expression = eval(expression).toString();
+          document.getElementById("display").innerText = expression;
+        } catch {
+          document.getElementById("display").innerText = "Error";
+          expression = "";
+        }
+      }
+    </script>
+  </body>
+</html>
